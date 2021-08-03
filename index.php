@@ -69,26 +69,14 @@ function downloadVideo($video_url, $type = "video", $video_name, $geturl = false
 
     if ($type == "video")
     {
-        $filename = "user_videos/" . $video_name . ".mp4";
         $my_space->upload($data, "vidfy/temp/fdfd.mp4","public","video/mp4");
     }
     if ($type == "image")
     {
-        
                 $my_space->upload($data, "vidfy/temp/fdfd.jpeg","public","image/jpeg");
-
-        $filename = "user_videos/" . $video_name . ".jpg";
     }
     
-    $d = fopen($filename, "w");
-    fwrite($d, $data);
-    fclose($d);
-    if ($type == "image")
-    {
-      $magicianObj = new imageLib($filename);
-$magicianObj -> resizeImage(190, 332);
-$magicianObj -> saveImage($filename, 90);
-    }
+    
     return $filename;
 }
 
